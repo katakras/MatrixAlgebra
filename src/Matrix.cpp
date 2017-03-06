@@ -51,6 +51,48 @@ Matrix Matrix::operator+(const Matrix& matrix)
   return result;
 }
 
+Matrix Matrix::operator-(const Matrix& matrix)
+{
+  if(matrix._n != _n || matrix._m != _m)
+    return Matrix(0,0);
+
+  Matrix result(_n,_m);
+  for(int i = 0; i < _n; ++i)
+  {
+    for(int j = 0; j < _m; ++j)
+      result._array[i][j] = matrix[i][j] - _array[i][j];
+  }
+  return result;
+}
+Matrix Matrix::operator-()
+{
+  Matrix result(_n,_m);
+  for(int i = 0; i < _n; ++i)
+  {
+    for(int j = 0; j < _m; ++j)
+      result._array[i][j] = -_array[i][j];
+  }
+  return result;
+}
+
+Matrix Matrix::operator*(const Matrix& matrix)
+{
+  if(_m != matrix._n)
+    return Matrix(0,0);
+  Matrix result(_n,matrix._m);
+  for(int i = 0; i < _n; ++i)
+  {
+    for(int j = 0; j < matrix._m; ++j)
+    {
+      double s = 0;
+      for(int k = 0; k < _m; ++k)
+        s += _array[i][k]*matrix._array[k][j];
+      result._array[i][j] = s;
+    }
+  }
+  return result;
+}
+
 void Matrix::operator=(const Matrix& matrix)
 {
   if(this == &matrix)
@@ -89,4 +131,15 @@ Matrix::aVector Matrix::operator[](int i) const
 Matrix::aVector Matrix::operator[](int i)
 {
   return aVector(_array[i]);
+}
+
+Matrix Matrix::transpose()
+{
+  Matrix matrix(_m,_n);
+  for(int i = 0; i < _m; ++i)
+  {
+    for(int j = 0; j < _n; ++j)
+      matrix._array[i][j] = _array[j][i];
+  }
+  return matrix;
 }

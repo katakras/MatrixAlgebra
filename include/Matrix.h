@@ -21,9 +21,13 @@ public:
   ~Matrix();
   std::pair<int, int> size() const;
   Matrix operator+(const Matrix&);
+  Matrix operator*(const Matrix&);
+  Matrix operator-(const Matrix&);
+  Matrix operator-();
   aVector operator[](int) const;
   aVector operator[](int);
   void operator=(const Matrix&);
+  Matrix transpose();
 private:
   double** _array;
   int _n, _m;
