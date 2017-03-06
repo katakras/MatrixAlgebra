@@ -19,8 +19,6 @@ int main()
   std::cout << std::endl;
   printMatrix(matrix1);
   std::cout << std::endl;
-  std::cout << matrix3._n << std::endl;
-  std::cout << "aaaa" << std::endl;
   return 0;
 }
 
