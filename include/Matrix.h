@@ -24,7 +24,7 @@ public:
   aVector operator[](int) const;
   aVector operator[](int);
   void operator=(const Matrix&);
-//private:
+private:
   double** _array;
   int _n, _m;
 };
