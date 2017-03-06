@@ -1,7 +1,7 @@
 CC = g++
 flags = -std=c++14
 
-makemain: makelibrary
+makemain: library
 	$(CC) $(flags) build/*.o src/main.cpp -o TestProgram
 
 library: build/matrix.o
